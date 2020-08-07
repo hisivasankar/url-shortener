@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: db-service
+
+  datasource:
+    url: "jdbc:h2:mem:url-shortener"
+    driver-class-name: org.h2.Driver
+    username: urladmin
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+server:
+  port: 9500
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9510/eureka
+  instance:
+    prefer-ip-address: true

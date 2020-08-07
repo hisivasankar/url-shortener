@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: url-service
+
+server:
+  port: 9520
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9510/eureka
+  instance:
+    prefer-ip-address: true
+
+#  servlet:
+#    context-path=/url
