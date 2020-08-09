@@ -4,6 +4,7 @@ import com.sivasankr.dbservice.dao.URLRepository;
 import com.sivasankr.dbservice.defaults.Constants;
 import com.sivasankr.dbservice.models.URLModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,13 @@ public class URLService {
     URLRepository urlRepo;
 
     @GetMapping("/url/{shortUrl}")
-    public URLModel getURL(@PathVariable("shortUrl") String shortUrl) {
+    public ResponseEntity<URLModel> getURL(@PathVariable("shortUrl") String shortUrl) {
         URLModel url = urlRepo.findByShortURL(shortUrl);
-        return url;
+
+        if (url == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(url);
     }
 
     @PostMapping("/url")

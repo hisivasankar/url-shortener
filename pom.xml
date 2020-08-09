@@ -20,5 +20,6 @@
         <module>db-service</module>
         <module>url-service</module>
         <module>service-discovery</module>
+        <module>gateway-service</module>
     </modules>
 </project>

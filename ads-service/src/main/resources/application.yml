@@ -1,9 +1,9 @@
 spring:
   application:
-    name: url-service
+    name: ads-service
 
 server:
-  port: 9520
+  port: 9530
 
 eureka:
   client:
@@ -11,6 +11,3 @@ eureka:
       defaultZone: http://localhost:9500/eureka
   instance:
     prefer-ip-address: true
-
-#  servlet:
-#    context-path=/url

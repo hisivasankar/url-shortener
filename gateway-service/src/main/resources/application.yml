@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: api-services
+          uri: lb://url-service
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+server:
+  port: 9540
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9500/eureka
+  instance:
+    prefer-ip-address: true

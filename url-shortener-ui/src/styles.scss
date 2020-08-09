@@ -1,6 +1,13 @@
 $primary-color: white;
 $bg: black;
+
 h1 {
   color: $primary-color;
   background-color: $bg;
+}
+
+body {
+  width: 80%;
+  margin: auto;
+  height: 100vh;
 }
