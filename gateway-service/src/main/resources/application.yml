@@ -11,11 +11,11 @@ spring:
           filters:
             - RewritePath=/api(?<segment>/?.*), $\{segment}
 server:
-  port: 9540
+  port: "${DEFAULT_SERVICE_PORT:9540}"
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9500/eureka
+      defaultZone: "${DEFAULT_EUREKA_SERVER:http://localhost:9500/eureka}"
   instance:
     prefer-ip-address: true

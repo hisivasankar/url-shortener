@@ -3,12 +3,12 @@ spring:
     name: url-service
 
 server:
-  port: 9520
+  port: "${DEFAULT_SERVICE_PORT:9520}"
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9500/eureka
+      defaultZone: "${DEFAULT_EUREKA_SERVER:http://localhost:9500/eureka}"
   instance:
     prefer-ip-address: true
 

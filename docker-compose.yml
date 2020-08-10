@@ -1,0 +1,97 @@
+version: "3.4"
+services:
+  service-discovery:
+    build:
+      context: ./service-discovery
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./service-properties.env
+    ports:
+      - "9500:8080"
+      - 8080
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+        reservations:
+          cpus: "0.10"
+          memory: 100M
+  db-service:
+    build:
+      context: ./db-service
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./service-properties.env
+    depends_on:
+      - service-discovery
+    ports:
+      - 8080
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+        reservations:
+          cpus: "0.10"
+          memory: 100M
+  url-service:
+    build:
+      context: ./url-service
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./service-properties.env
+    depends_on:
+      - db-service
+      - ads-service
+      - service-discovery
+    ports:
+      - 8080
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+        reservations:
+          cpus: "0.10"
+          memory: 100M
+  ads-service:
+    build:
+      context: ./ads-service
+      dockerfile: ./Dockerfile
+    depends_on:
+      - db-service
+      - service-discovery
+    ports:
+      - 8080
+    env_file:
+      - ./service-properties.env
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+        reservations:
+          cpus: "0.10"
+          memory: 100M
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./service-properties.env
+    ports:
+      - "9000:8080"
+    depends_on:
+      - db-service
+      - url-service
+      - ads-service
+      - service-discovery
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+        reservations:
+          cpus: "0.10"
+          memory: 100M

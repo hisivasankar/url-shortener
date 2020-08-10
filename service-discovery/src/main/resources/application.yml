@@ -3,11 +3,11 @@ spring:
     name: eureka-server
 
 server:
-  port: 9500
+  port: "${DEFAULT_SERVICE_PORT:9500}"
 
 eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
     service-url:
-      defaultZone: http://localhost:9500/eureka
+      defaultZone: http://localhost:${server.port}/eureka
