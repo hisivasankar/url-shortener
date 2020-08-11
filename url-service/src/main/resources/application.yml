@@ -12,5 +12,6 @@ eureka:
   instance:
     prefer-ip-address: true
 
+
 #  servlet:
 #    context-path=/url

@@ -8,7 +8,9 @@ CREATE TABLE URL_REPO (
 
 INSERT INTO URL_REPO(original_url, short_url) VALUES('https://stackoverflow.com/a/34418151/4286434234234', 'asdf');
 INSERT INTO URL_REPO(original_url, short_url) VALUES('https://www.baeldung.com/spring-boot-h2-database', 'jpa');
-
+INSERT INTO URL_REPO(original_url, short_url) VALUES('https://cloud.spring.io/spring-cloud-gateway/reference/html/#gateway-request-predicates-factories', 'gate');
+INSERT INTO URL_REPO(original_url, short_url) VALUES('https://techrocking.com/spring-cloud-zuul-proxy-as-api-gateway/', 'zuul');
+INSERT INTO URL_REPO(original_url, short_url) VALUES('https://github.com/reactjs/reactjs.org', 'react');
 
 DROP TABLE IF EXISTS ADS_REPO;
 

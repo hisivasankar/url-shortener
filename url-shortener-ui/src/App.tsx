@@ -14,7 +14,7 @@ interface State {
   urlInfo: Interfaces.URL;
 }
 
-const SERVER_URL_PLACEHOLDER = "http://localhost:9540/api/url";
+const SERVER_URL_PLACEHOLDER = "/api/url";
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {

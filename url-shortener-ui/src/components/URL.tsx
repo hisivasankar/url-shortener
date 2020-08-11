@@ -20,9 +20,13 @@ export const URL = (props: Props) => {
       </p>
     );
 
-    setTimeout(() => {
-        window.location.href = originalURL;
-    }, REDIRECTION_DELAY);
+    const skipRedirect = getUrlParameter("skip-redirect");
+
+    if (!skipRedirect) {
+        setTimeout(() => {
+          window.location.href = originalURL;
+      }, REDIRECTION_DELAY);
+    }
   }
 
   let shortURLContent;
@@ -38,4 +42,19 @@ export const URL = (props: Props) => {
       {redirectionAlert}
     </div>
   );
+};
+
+var getUrlParameter = function getUrlParameter(param: string) {
+  var sPageURL = window.location.search.substring(1),
+      sURLVariables = sPageURL.split('&'),
+      sParameterName,
+      i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === param) {
+          return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+      }
+  }
 };

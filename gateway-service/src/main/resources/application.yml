@@ -10,6 +10,10 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api(?<segment>/?.*), $\{segment}
+        - id: web
+          uri: http://url-shortener-web:8080
+          predicates:
+            - Path=/**
 server:
   port: "${DEFAULT_SERVICE_PORT:9540}"
 
